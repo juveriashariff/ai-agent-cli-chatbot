@@ -14,6 +14,7 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # load your key from the .env file (or real env if present)
 # openai.api_key = os.getenv("OPENAI_API_KEY")
+#test
 
 def chat():
     print("🤖 Welcome to your CLI Chatbot! (type 'exit' to quit)")
