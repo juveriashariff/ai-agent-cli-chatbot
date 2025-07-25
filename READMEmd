@@ -1,0 +1,149 @@
+# CLI Chatbot
+
+A simple command‑line interface (CLI) chatbot built with Python and OpenAI’s GPT‑3.5‑turbo model.  
+Type messages in your terminal and receive AI‑powered replies in real time.
+
+---
+
+## 📦 Features
+
+- **Interactive chat loop** with history/context  
+- **Graceful exit** on “exit” or “quit”  
+- **Nicer input** via `prompt-toolkit` (arrow‑key recall, editing)  
+- **Easy setup** with `venv` and environment variables  
+- **Lightweight**: minimal dependencies, runs in any terminal  
+
+---
+
+## 🛠️ Prerequisites
+
+- **Windows/macOS/Linux** with a Bash or PowerShell terminal  
+- **Python 3.8+** installed (we recommend 3.10 or higher)  
+- **Git** (for version control and pushing to GitHub)  
+- **OpenAI API key** (get one from [platform.openai.com](https://platform.openai.com/account/api-keys))  
+
+---
+
+## ⚙️ Installation
+
+1. **Clone the repo**  
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/cli-chatbot.git
+   cd cli-chatbot
+   ```
+
+2. **Create a virtual environment**  
+   ```bash
+   # Windows (PowerShell)
+   py -m venv venv
+   .\venv\Scripts\Activate.ps1
+
+   # macOS/Linux
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
+
+3. **Install dependencies**  
+   ```bash
+   pip install --upgrade pip
+   pip install -r requirements.txt
+   ```
+   > If you don’t have a `requirements.txt`, run:
+   > ```bash
+   > pip install openai python-dotenv prompt-toolkit
+   > ```
+
+4. **Configure your API key**  
+   Create a file named `.env` in the project root containing:
+   ```
+   OPENAI_API_KEY=sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+   ```
+   Or add the same key to your environment variables:
+   - **Windows (PowerShell)**
+     ```powershell
+     $Env:OPENAI_API_KEY = "sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+     ```
+   - **macOS/Linux**
+     ```bash
+     export OPENAI_API_KEY="sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+     ```
+
+---
+
+## 🚀 Usage
+
+With your virtual environment **activated** and your API key set:
+
+```bash
+py cli_chatbot.py
+# or
+python cli_chatbot.py
+```
+
+You’ll see:
+```
+🤖 Welcome to your CLI Chatbot! (type 'exit' to quit)
+You:
+```
+
+- **Type** anything and press Enter → the bot replies.  
+- **Type** `exit` or `quit` → the session ends gracefully.
+
+---
+
+## 🧩 How It Works
+
+1. **Load dependencies** (`openai`, `prompt-toolkit`, `dotenv`)  
+2. **Read your API key** from `.env` or the environment  
+3. **Start a chat loop** that:
+   - Reads your input  
+   - Appends it to conversation history  
+   - Sends **all** messages to OpenAI’s ChatCompletion API  
+   - Prints the AI’s response and adds it back to history  
+4. **Exit** when you type “exit” or “quit”
+
+You can explore or modify:
+
+- **Model selection** (e.g. `gpt-4` once available)  
+- **System prompt** (first message in `history`) to steer behavior  
+- **Error handling** (e.g. catch rate-limit or network errors)  
+- **Prompt parameters** like `temperature` for creativity
+
+---
+
+## 🔧 Customization & Extensions
+
+- **Add retries** on rate limits or timeouts  
+- **Log conversations** to a file for later review  
+- **Package** with [PyInstaller](https://www.pyinstaller.org/) for a standalone executable  
+- **Implement function-calling** to have the bot run local commands (weather lookup, file searches, etc.)  
+- **Build a web UI** using Flask or FastAPI for browser access  
+
+---
+
+## 📂 Repository Structure
+
+```
+cli-chatbot/
+├── venv/                        # Virtual environment (do not commit)
+├── .env                         # Your private API key
+├── cli_chatbot.py               # Main chat script
+├── requirements.txt             # Python dependencies
+└── README.md                    # This file
+```
+
+---
+
+## 📄 License
+
+This project is released under the **MIT License**. See [LICENSE](LICENSE) for details.
+
+---
+
+## ❤️ Acknowledgments
+
+- [OpenAI Python SDK](https://github.com/openai/openai-python)  
+- [prompt-toolkit](https://github.com/prompt-toolkit/python-prompt-toolkit)  
+- Inspiration from countless AI chatbot tutorials across the web!
+
+Enjoy your AI chatbot! If you run into issues or have ideas, feel free to open an issue or submit a PR.
